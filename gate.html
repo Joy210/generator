@@ -1,0 +1,108 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Logic Gates</title>
+	<link rel="stylesheet" href="gate.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div class="nav">
+		<h1>S.rahman</h1>
+		
+		<ul>
+			<li><a href="home.html">Home</a></li>
+			<li><a href="calculator.html">Calculator</a></li>
+			<li><a href="temperature.html">Temperature</a></li>
+			<li><a href="gate.html" class="active">Logic Gates</a></li>
+		</ul>
+	</div>
+ 
+
+	<div id="main">
+		<center><br><br><br>
+			<h2>Logic Gates</h2><br>
+
+			<input type="text" id="insert1" placeholder="Input A" onkeypress="onlyNumericValue(event)"/>
+			<input type="text" id="insert2" placeholder="Input B" onkeypress="onlyNumericValue(event)"/><br><br>
+
+			<button type="button" onclick="myFunction1()">AND</button>
+			<button type="button" onclick="myFunction2()">OR</button><br><br>
+
+			<input type="text" id="insert" placeholder="Input for Not Gate" onkeypress="onlyNumericValue(event)"/><br><br>
+
+
+			<button type="button" onclick="myFunction4()">NOT (AND)</button>
+			<button type="button" onclick="myFunction3()">NOT</button>			
+			<button type="button" onclick="myFunction5()">NOT (OR)</button><br><br>
+
+			<input type="text" id="output" placeholder="Output" readonly/>
+		</center>
+	</div>
+
+
+	<script>
+		function toAnd(a, b){
+			var output;
+			if (a == 0 && b == 0) {output = 0;}
+			if (a == 1 && b == 0) {output = 0;}
+			if (a == 0 && b == 1) {output = 0;}
+			if (a == 1 && b == 1) {output = 1;}
+			return output;
+		}
+
+		function myFunction1(){
+			let res1 = document.getElementById('insert1').value;
+			let res2 = document.getElementById('insert2').value;
+			document.getElementById("output").value = toAnd(res1, res2);
+		}
+
+		function toOr(a, b){
+			var output;
+			if (a == 0 && b == 0) {output = 0;}
+			if (a == 1 && b == 0) {output = 1;}
+			if (a == 0 && b == 1) {output = 1;}
+			if (a == 1 && b == 1) {output = 1;}
+			return output;
+		}
+
+		function myFunction2(){
+			let res1 = document.getElementById('insert1').value;
+			let res2 = document.getElementById('insert2').value;
+			document.getElementById("output").value = toOr(res1, res2);
+		}
+
+		function toNot(a){
+			var output;
+			if (a == 0) {output = 1;}
+			if (a == 1) {output = 0;}
+			return output;
+		}
+
+		function myFunction3(){
+			let res1 = document.getElementById('insert').value;
+			document.getElementById("output").value = toNot(res1);
+		}
+		/////////////////////////////////////////////////////////////
+		function myFunction4(){
+			let res1 = document.getElementById('insert1').value;
+			let res2 = document.getElementById('insert2').value;
+			document.getElementById("output").value = toNot(toAnd(res1, res2));
+		}
+
+		function myFunction5(){
+			let res1 = document.getElementById('insert1').value;
+			let res2 = document.getElementById('insert2').value;
+			document.getElementById("output").value = toNot(toOr(res1, res2));
+		}
+
+		/// do not take any char value
+		function onlyNumericValue(event){
+			var ch = String.fromCharCode(event.which);
+
+			if(!(/[0-9]/.test(ch))){
+				event.preventDefault();
+			}
+		}
+	</script>
+</body>
+</html>

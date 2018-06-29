@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Temperature</title>
+	<link rel="stylesheet" href="temperature.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div class="nav">
+		<h1>S.rahman</h1>
+		
+		<ul>
+			<li><a href="home.html">Home</a></li>
+			<li><a href="calculator.html">Calculator</a></li>
+			<li><a href="temperature.html" class="active">Temperature</a></li>
+			<li><a href="gate.html">Logic Gates</a></li>
+		</ul>
+	</div>
+ 
+
+	<div id="main">
+		<center>
+			<h2>Temperature Converter</h2><br><br><br>
+
+			<input type="text" placeholder="Enter value" onkeypress="onlyNumericValue(event)" id="insert"/><br><br><br>
+
+			<button type="button" onclick="myFunction1()">Fahrenheit</button>
+			<button type="button" onclick="myFunction2()">Celsius</button> <br><br><br>
+
+			<input type="text" id="output" placeholder="Output" readonly/>
+		</center>
+	</div>
+
+
+	<script>
+		function toCelsius(fahrenheit){
+			return (5/9) * (fahrenheit - 32);
+		}
+
+		function tofahrenhite(celsius){
+			return celsius * (9/5) + 32;
+		}
+
+		// toCelsius
+		function myFunction1(){
+			let res1 = document.getElementById('insert').value;
+			document.getElementById("output").value = toCelsius(res1).toFixed(2) + " Celsius";
+		}
+
+		// toFahrenheit
+		function myFunction2(){
+			let res2 = document.getElementById('insert').value;
+			document.getElementById("output").value = tofahrenhite(res2).toFixed(2) + " Fahrenheit";
+		}
+
+		/// do not take any char value
+		function onlyNumericValue(event){
+			var ch = String.fromCharCode(event.which);
+
+			if(!(/[0-9]/.test(ch))){
+				event.preventDefault();
+			}
+		}
+	</script>
+
+</body>
+</html>

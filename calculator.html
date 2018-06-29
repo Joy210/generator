@@ -1,0 +1,101 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Calculator</title>
+	<link rel="stylesheet" href="calculator.css">
+	<link rel="stylesheet" href="main.css">
+
+	
+	<style>
+		@font-face{
+			font-family: "myFont";
+			src: url("Font/digital-7.ttf");
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<h1>S.rahman</h1>
+		
+		<ul>
+			<li><a href="home.html">Home</a></li>
+			<li><a href="calculator.html" class="active">Calculator</a></li>
+			<li><a href="temperature.html">Temperature</a></li>
+			<li><a href="gate.html">Logic Gates</a></li>
+		</ul>
+	</div>
+
+	<div class="main">
+		<h2>Calculator</h2>
+		<center>
+			<form name="form">
+			<input class="textView" name="textView" onkeypress="onlyNumericValue(event)">
+		</form>
+
+		<table>
+			<tr>
+				<td><input type="button" class="button" value="C" onclick="clean()"></td>
+				<td><input type="button" class="button" value="<" onclick="back()"></td>
+				<td><input type="button" class="button" value="/" onclick="insert('/')"></td>
+				<td><input type="button" class="button" value="*" onclick="insert('*')"></td>
+			</tr>
+			<tr>
+				<td><input type="button" class="button" value="7" onclick="insert(7)"></td>
+				<td><input type="button" class="button" value="8" onclick="insert(8)"></td>
+				<td><input type="button" class="button" value="9" onclick="insert(9)"></td>
+				<td><input type="button" class="button" value="-" onclick="insert('-')"></td>
+			</tr>
+			<tr>
+				<td><input type="button" class="button" value="6" onclick="insert(6)"></td>
+				<td><input type="button" class="button" value="5" onclick="insert(5)"></td>
+				<td><input type="button" class="button" value="4" onclick="insert(4)"></td>
+				<td><input type="button" class="button" value="+" onclick="insert('+')"></td>
+			</tr>
+			<tr>
+				<td><input type="button" class="button" value="1" onclick="insert(1)"></td>
+				<td><input type="button" class="button" value="2" onclick="insert(2)"></td>
+				<td><input type="button" class="button" value="3" onclick="insert(3)"></td>
+				<td rowspan="2"><input type="button" style="height: 111px; font-size: 15" class="button" value="Enter" onclick="calculation()"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" style="width: 111px" class="button" value="0" onclick="insert(0)"></td>
+				<td><input type="button" class="button" value="." onclick="insert('.')"></td>
+			</tr>
+		</table>
+		</center>
+	</div>
+
+
+	<!-- .............................JavaScript................................ -->
+	<script>
+		function insert(num){
+			document.form.textView.value = document.form.textView.value + num;
+		}
+
+		function clean(){
+			document.form.textView.value = "";
+		}
+
+		function back(){
+			var exp = document.form.textView.value;
+			document.form.textView.value = exp.substring(0, exp.length-1);
+		}
+
+		function calculation(){
+			var exp = document.form.textView.value;
+			if (exp) {
+				document.form.textView.value = eval(exp);
+			}
+		}
+
+		/// do not take any char value
+		function onlyNumericValue(evt){
+			var ch = String.fromCharCode(evt.which);
+
+			if(!(/[0-9]/.test(ch))){
+				evt.preventDefault();
+			}
+		}
+	</script>
+</body>
+</html>

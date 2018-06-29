@@ -1,0 +1,57 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	width: 1360px;
+	background-color: #2B303B;
+	outline: none;
+	font-family: arial;
+}
+
+
+h1{
+	background-color: coral;
+	width: 120px;
+	padding: 10px;
+	border-radius: 0 30px 30px 0;
+	color: black;
+	font-size: 18;
+	text-align: center;
+	margin-top: 9px; 
+}
+
+ul{
+	position: absolute;
+	top: 3%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+ul li{
+	display: inline-block;
+	list-style: none;
+	width: 155px;
+	line-height: 30px;
+	text-align: center;
+}
+
+ul li a{
+	text-decoration: none;
+	color: coral;
+	display: block;
+	padding: 5px;
+	font-size: 20;
+	border: 1px solid coral;
+}
+
+ul li a:hover{
+	border: none;
+	color: black;
+	background-color: coral;
+}
+
+ul li a.active{
+	background-color: coral;
+	color: black;
+	border: none;
+	font-weight: bold;
+}
